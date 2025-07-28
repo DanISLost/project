@@ -47,3 +47,28 @@ while read -r LINE; do
       echo "[WARNING] No files found in $SRC_PATH with extension .$EXTENSION" >> "$LOG_FILE"
       continue
     fi
+    tar -czf "$DEST_PATH" $FILES 2>>"$LOG_FILE"
+    if [[ $? -ne 0 ]]; then
+      echo "[ERROR] Failed to back up $SRC_PATH" | tee -a "$LOG_FILE" | mail -s "Backup Error" user@example.com
+    fi
+  fi
+done < "$CONFIG_FILE"
+
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+B
+B
+B
+B
+B
+B
+
