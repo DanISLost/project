@@ -15,3 +15,14 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
   echo "[ERROR] Config file $CONFIG_FILE not found!" | tee -a "$LOG_FILE"
   exit 1
 fi
+
+mkdir -p "$DEST_DIR"
+
+
+DATE=$(date +"%Y-%m-%d_%H-%M-%S")
+
+echo "=== Backup Started at $(date) ===" >> "$LOG_FILE"
+
+while read -r LINE; do
+
+
