@@ -34,4 +34,10 @@ while read -r LINE; do
   ARCHIVE_NAME="${NAME}_${DATE}.tar.gz"
   DEST_PATH="${DEST_DIR}/${ARCHIVE_NAME}"
 
+  if [[ "$EXTENSION" == "*" ]]; then
+    FILES=$(find "$SRC_PATH" -type f)
+  else
+    FILES=$(find "$SRC_PATH" -type f -name "*.${EXTENSION}")
+  fi
+
 
