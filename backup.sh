@@ -25,4 +25,9 @@ echo "=== Backup Started at $(date) ===" >> "$LOG_FILE"
 
 while read -r LINE; do
 
+  [[ -z "$LINE" || "$LINE" == \#* ]] && continue
+
+  SRC_PATH=$(echo "$LINE" | awk '{print $1}')
+  EXTENSION=$(echo "$LINE" | awk '{print $2}')
+
 
