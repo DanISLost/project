@@ -10,3 +10,8 @@ if [[ "$1" == "--dry-run" ]]; then
   DRY_RUN=true
   echo "[INFO] Running in dry-run mode." >> "$LOG_FILE"
 fi
+
+if [[ ! -f "$CONFIG_FILE" ]]; then
+  echo "[ERROR] Config file $CONFIG_FILE not found!" | tee -a "$LOG_FILE"
+  exit 1
+fi
