@@ -40,4 +40,10 @@ while read -r LINE; do
     FILES=$(find "$SRC_PATH" -type f -name "*.${EXTENSION}")
   fi
 
-
+  if $DRY_RUN; then
+    echo "[DRY-RUN] Would back up files: $FILES" >> "$LOG_FILE"
+  else
+    if [[ -z "$FILES" ]]; then
+      echo "[WARNING] No files found in $SRC_PATH with extension .$EXTENSION" >> "$LOG_FILE"
+      continue
+    fi
