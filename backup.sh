@@ -54,21 +54,9 @@ while read -r LINE; do
   fi
 done < "$CONFIG_FILE"
 
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-B
-B
-B
-B
-B
-B
+echo "[INFO] Removing backups older than $RETENTION_DAYS days" >> "$LOG_FILE"
+if ! $DRY_RUN; then
+  find "$DEST_DIR" -type f -name "*.tar.gz" -mtime +$RETENTION_DAYS -exec rm -f {} \; >> "$LOG_FILE"
+fi
 
+echo "=== Backup Finished at $(date) ===" >> "$LOG_FILE"
