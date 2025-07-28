@@ -30,4 +30,8 @@ while read -r LINE; do
   SRC_PATH=$(echo "$LINE" | awk '{print $1}')
   EXTENSION=$(echo "$LINE" | awk '{print $2}')
 
+  NAME=$(basename "$SRC_PATH")
+  ARCHIVE_NAME="${NAME}_${DATE}.tar.gz"
+  DEST_PATH="${DEST_DIR}/${ARCHIVE_NAME}"
+
 
